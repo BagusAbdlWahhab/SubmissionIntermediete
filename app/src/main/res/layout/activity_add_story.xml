@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#E8E8E8">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Story"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="24dp" />
+
+    <ImageView
+        android:id="@+id/ivPreview"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="#D3D3D3"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_placeholder" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="16dp">
+
+        <Button
+            android:id="@+id/btnCamera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Camera"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/btnGallery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gallery" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/etDescription"
+        android:layout_width="match_parent"
+        android:layout_height="123dp"
+        android:layout_marginTop="16dp"
+        android:hint="Description"
+        android:padding="8dp" />
+
+    <Button
+        android:id="@+id/btnUpload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Upload"
+        android:layout_marginTop="16dp"
+        android:background="#FF6200EE"
+        android:textColor="#FFFFFF" />
+
+</LinearLayout>
