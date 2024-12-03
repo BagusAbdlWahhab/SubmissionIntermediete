@@ -33,13 +33,15 @@ class StoryAdapter: PagingDataAdapter<StoryItem, StoryAdapter.ViewHolder>(DIFF_C
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(stories[position])
-        holder.itemView.setOnClickListener {
-            onItemClickCallback?.onItemClicked(stories[position])
+        getItem(position)?.let {
+            holder.bind(it)
+            holder.itemView.setOnClickListener {_->
+                onItemClickCallback?.onItemClicked(it)
+            }
         }
     }
 
-    override fun getItemCount() = stories.size
+//    override fun getItemCount() = stories.size
 
     class ViewHolder(private val binding: ItemStoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -60,7 +62,7 @@ class StoryAdapter: PagingDataAdapter<StoryItem, StoryAdapter.ViewHolder>(DIFF_C
     }
 
     companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<StoryItem>() {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<StoryItem>() {
             override fun areItemsTheSame(oldItem: StoryItem, newItem: StoryItem): Boolean {
                 return oldItem.id == newItem.id
             }

@@ -60,23 +60,19 @@ class MainActivity : AppCompatActivity() {
                 finish()
             } else {
                 userToken = user.token
-                viewModel.getStories()
+                setupRecyclerView()
+                observeStories()
             }
         }
 
         setupView()
         setupAction()
-
-        setupRecyclerView()
-        observeStories()
-        viewModel.getStories()
     }
 
     private fun setupRecyclerView() {
         adapter = StoryAdapter()
         adapter.setOnItemClickCallback(object : StoryAdapter.OnItemClickCallback {
             override fun onItemClicked(data: StoryItem) {
-                // Navigate ke DetailActivity
                 Intent(this@MainActivity, DetailActivity::class.java).also { intent ->
                     intent.putExtra(DetailActivity.EXTRA_ID, data.id)
                     intent.putExtra(DetailActivity.EXTRA_TOKEN, userToken)
