@@ -69,6 +69,13 @@ class MainActivity : AppCompatActivity() {
         setupAction()
     }
 
+    override fun onStart() {
+        super.onStart()
+        if(::adapter.isInitialized) {
+            adapter.refresh()
+        }
+    }
+
     private fun setupRecyclerView() {
         adapter = StoryAdapter()
         adapter.setOnItemClickCallback(object : StoryAdapter.OnItemClickCallback {

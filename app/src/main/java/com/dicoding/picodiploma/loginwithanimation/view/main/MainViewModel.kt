@@ -29,23 +29,6 @@ class MainViewModel(private val repository: UserRepository) : ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
-    fun getStories() {
-        viewModelScope.launch {
-            _isLoading.value = true
-            try {
-                val user = repository.getSession().first()
-                if (user.isLogin && user.token.isNotEmpty()) {
-                    val response = repository.getStories()
-                    _stories.value = response.listStory
-                }
-            } catch (e: Exception) {
-                Log.e("MainViewModel", "getStories error: ${e.message}")
-            } finally {
-                _isLoading.value = false
-            }
-        }
-    }
-
     fun getStoriesWithLocation() {
         viewModelScope.launch {
             repository.getStoriesWithLocation()

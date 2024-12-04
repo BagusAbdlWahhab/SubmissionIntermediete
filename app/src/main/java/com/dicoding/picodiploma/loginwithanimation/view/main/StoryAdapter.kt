@@ -17,12 +17,6 @@ class StoryAdapter: PagingDataAdapter<StoryItem, StoryAdapter.ViewHolder>(DIFF_C
         this.onItemClickCallback = onItemClickCallback
     }
 
-    fun setStories(newStories: List<StoryItem>) {
-        stories.clear()
-        stories.addAll(newStories)
-        notifyDataSetChanged()
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemStoryBinding.inflate(
             LayoutInflater.from(parent.context),
